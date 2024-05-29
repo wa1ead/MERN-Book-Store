@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   return res.status(234).send("Welcome To MERN Stack World");
 });
 
-//Route for adding a Book
+//Route for add a Book to DataBase
 app.post("/books", async (request, response) => {
   try {
     if (
@@ -37,6 +37,17 @@ app.post("/books", async (request, response) => {
   } catch (error) {
     console.log(error.message);
     respone.status(500).send({ message: error.message });
+  }
+});
+
+//Routr for get all Books from DataBase
+app.get("/books", async (request, response) => {
+  try {
+    const books = await Book.find({});
+    return response.status(200).json(books);
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).send({ message: error.message });
   }
 });
 
