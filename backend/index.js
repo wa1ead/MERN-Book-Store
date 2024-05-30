@@ -8,6 +8,15 @@ const app = express();
 //Middelware for parsing request
 app.use(express.json());
 
+//Middelware for handling CORS Policy
+app.use(
+  cors({
+    origin: "https://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["cCntent-Type"],
+  })
+);
+
 app.get("/", (req, res) => {
   console.log(req);
   return res.status(234).send("Welcome To MERN Stack World");
