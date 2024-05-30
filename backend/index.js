@@ -10,13 +10,13 @@ const app = express();
 app.use(express.json());
 
 //Middelware for handling CORS Policy
-app.use(
-  cors({
-    origin: "https://localhost:3000",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["cCntent-Type"],
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://localhost:3000",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["cCntent-Type"],
+//   })
+// );
 
 app.get("/", (req, res) => {
   console.log(req);
