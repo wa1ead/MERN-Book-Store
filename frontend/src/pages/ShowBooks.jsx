@@ -20,7 +20,7 @@ export default function ShowBooks() {
         console.log(error);
         setLoading(false);
       });
-  }, []);
+  }, [id]);
   return (
     <div className="py-4">
       <BackButton />
