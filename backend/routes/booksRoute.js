@@ -11,7 +11,7 @@ router.post("/", async (request, response) => {
       !request.body.author ||
       !request.body.publishYear
     ) {
-      return respone
+      return response
         .status(400)
         .send({ message: "Please fill in all the fields" });
     }
