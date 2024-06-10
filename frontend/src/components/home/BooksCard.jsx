@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import SingleBookCard from "./SingleBookCard";
 
 export default function BooksCard({ books }) {
