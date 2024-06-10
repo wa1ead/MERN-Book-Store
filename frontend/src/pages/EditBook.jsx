@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { useSnackbar } from "notistack";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 
@@ -9,6 +10,7 @@ export default function CreateBook() {
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
   const [loading, setLoading] = useState(false);
+  const { enqueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const { id } = useParams();
   useEffect(() => {
@@ -23,7 +25,10 @@ export default function CreateBook() {
       })
       .catch((error) => {
         setLoading(false);
-        alert("There was an error, please check the console");
+        // alert("There was an error, please check the console");
+        enqueSnackbar("There was an error, please check the console", {
+          variant: "error",
+        });
         console.log(error);
       });
   }, [id]);
@@ -34,12 +39,17 @@ export default function CreateBook() {
       .put(`http://localhost:5555/books/${id}`, data)
       .then(() => {
         setLoading(false);
-        alert("Book saved successfully!");
+        // alert("Book saved successfully!");
+        enqueSnackbar("Book saved successfully!", { variant: "success" });
         navigate("/");
       })
       .catch((error) => {
         setLoading(false);
-        alert("There was an error saving the book, please check console");
+        // alert("There was an error saving the book, please check console");
+        enqueSnackbar(
+          "There was an error saving the book, please check console",
+          { variant: "error" }
+        );
         console.log(error);
       });
   };
